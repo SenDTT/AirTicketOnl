@@ -26,4 +26,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('banks', 'BanksController');
     Route::resource('seatClasses', 'SeatClassesController');
     Route::resource('airplanes', 'AirplanesController');
+    Route::resource('flights', 'FlightController');
+    Route::resource('airlines', 'AirlineController');
+    Route::resource('routes', 'RouteController');
+    Route::resource('airports', 'AirportController');
 });
