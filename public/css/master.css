@@ -1,0 +1,36 @@
+footer, footer a{
+    background-color: #333333;
+    color: #6c757d;
+}
+footer{
+    padding: 0 10%;
+}
+footer a:hover{
+    color: #1b4b72;
+    text-decoration: none;
+}
+footer > label{
+    padding-top: 1%;
+    width: 100%;
+}
+.links, .link-twitter, .li-last{
+    padding: 2% 0;
+}
+.link-fb, .link-gmail, .link-twitter{
+    width: 33px;
+    height: 33px;
+}
+.link-fb{
+    left: 0;
+    background: url("../images/share.png") -82px 33px;
+}
+.link-gmail{
+    left: 34px;
+    background: url("../images/share.png") -205px 33px;
+}
+.link-twitter{
+    left: 60px;
+    background-image: url("../images/tw.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}

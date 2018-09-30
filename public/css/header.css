@@ -1,0 +1,23 @@
+header > div.navbar-default{
+    background-color: #333333!important;
+}
+header > div.navbar{
+    padding: 0 5%;
+}
+.navbar-header > a.h3{
+    font-size: 24px;
+    color: darkorange;
+    margin: 0;
+}
+.navbar-toggle, .navbar-toggle:focus, .navbar-toggle:hover, .navbar-toggle:active, .navbar-toggle:visited{
+    background-color: inherit!important;
+}
+.navbar-right .nav-active > a{
+    background-color: inherit;
+    color: orange!important;
+}
+@media screen and (max-width: 767px){
+    .navbar-header > a.h3{
+        font-size: 18px;
+    }
+}

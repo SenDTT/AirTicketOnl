@@ -1,0 +1,119 @@
+.bg-content-info{
+    padding: 5% 10%;
+    margin-top: 2%;
+    background-color: aliceblue;
+}
+.tittle-choose{
+    background-color: lightgray;
+    width: 100%;
+    padding: 1% 1px 0 5px;
+    margin: 0px;
+}
+.content-info{
+    margin-top: 2%;
+    border: 1px solid #6c757d;
+}
+.input-group, .form-control{
+    width: 100%!important;
+}
+.txtTittle{
+    background-color: blue;
+    color: white;
+    padding: 2%;
+    width: 100%;
+    margin: 0;
+}
+.tittle-choose .col-sm-2{
+    width: 85px;
+}
+.tittle-choose .col-sm-2, .tittle-choose .col-sm-6{
+    padding-right: 0;
+}
+.tittle-choose .col-sm-4{
+    padding-left: 0;
+}
+#flightDetail-choose, #flightReturnDetail-choose{
+    margin: 1%;
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+}
+.detail-choose > .row {
+    margin: 0;
+}
+.detail-choose{
+    padding: 1%;
+}
+.flight-choose{
+    background-color: white;
+}
+.flight-detail-info-choose{
+    border-top: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+}
+.flight-detail-info-choose, .sum{
+    padding: 1%;
+}
+.table-detail-choose th{
+    padding: 1% 0;
+}
+.ul-info-contact{
+    margin: 0 1% 1%;
+    padding-top: 1%;
+}
+.pd-li-customer{
+    padding: 1% 2%;
+}
+.sum > label:first-child{
+    width: 80%;
+}
+.sum > label:last-child{
+    width: 19%;
+}
+.table-detail-choose, .row-last textarea{
+    width: 100%;
+}
+.unit{
+    color: red;
+}
+.bags{
+    padding: 5px 0;
+    border: 1px solid #333333;
+}
+.info-customer {
+      margin-bottom: 2%;
+}
+.bags-order > ul{
+    margin-bottom: 1%;
+}
+.row-last{
+    padding: 0 15px;
+}
+.material-icons{
+    color: white;
+}
+.nav-tabs-banks, .tab-content-banks, li.active > a.tab-banks, li.active > a.tab-banks:focus, li.active > a.tab-banks:hover{
+    border: none;
+}
+.tab-content-banks{
+    padding-left: 5%;
+}
+li.active > a.tab-banks:focus li > .icon-chevron-up{
+    display: block;
+}
+li > a.tab-banks{
+    padding-bottom: 0;
+}
+.icon-chevron-up{
+    color: lightblue;
+    display: none;
+    position: absolute;
+    left: 43%;
+    top: 95%;
+}
+.tab-content-banks{
+    margin-top: 8px;
+    width: 96%;
+    border: 1px solid lightblue;
+    margin-bottom: 8px;
+    margin-left: 2%;
+}

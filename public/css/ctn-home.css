@@ -1,0 +1,119 @@
+a:hover{
+    text-decoration: none;
+}
+.carousel > .carousel-inner > .item > img{
+    width: 100%;
+    height: 430px;
+}
+.find-flight{
+    padding: 1% 0 3%;
+}
+.tab-content{
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+#flights .col-sm-3{
+    padding: 1% 3%;
+}
+.selects{
+    width: 100%;
+    border-radius: 5px!important;
+}
+.hide-h5{
+    color: white;
+}
+.btn-find-flight{
+    position: relative;
+    right: -45%;
+}
+.info-website{
+    padding: 0 7%;
+    background-color: aliceblue;
+}
+.info-website > .col-sm-3{
+    padding: 7% 0;
+}
+.info-website .img{
+    width: 100px;
+    height: 100px;
+}
+.fm-places{
+    padding: 3% 0;
+}
+.fm-places > h2{
+    color: dodgerblue;
+}
+.fm-places > a{
+    margin-bottom: 3%;
+}
+.img-places{
+    height: 150px;
+    width: 100%;
+    margin-bottom: 5%;
+}
+.label-tittle{
+    width: 100%;
+}
+.input-group > span{
+    background-color: lightblue;
+    color: darkorange
+}
+.fm-dishes, .fm-places{
+    padding: 2% 10%;
+}
+.fm-dishes{
+    background-color: aliceblue;
+}
+#famous-places, #famous-dishes{
+    margin: 1% 0;
+}
+.fm-dishes .content-detail{
+    margin: 2% 0;
+    height: 100px;
+}
+a.h4{
+    color: royalblue;
+}
+.content-detail {
+    margin: 2% 0;
+    height: 70px;
+}
+.h2-tittle{
+    color: dodgerblue;
+}
+#idReturnDate{
+    display: none;
+}
+input[type=checkbox]{
+    margin: 0;
+}
+/*locations*/
+.locations_from, .locations_to{
+    border: 1px solid lightgray;
+    border-top: none;
+    margin-left: 13%;
+    width: 62%;
+    height: 200px;
+    position: absolute;
+    display: none;
+    z-index: 3;
+    overflow: auto;
+    background-color: lavender;
+}
+.li-locations{
+    border-bottom: 1px solid lightblue;
+    padding-left: 5%;
+    overflow: auto;
+}
+@media screen and (max-width: 767px){
+    .carousel > .carousel-inner > .item > img{
+        height: 200px;
+    }
+    .find-flight{
+        padding: 1% 3%;
+    }
+    #flights .col-sm-3{
+        padding: 1% 6%;
+    }
+}

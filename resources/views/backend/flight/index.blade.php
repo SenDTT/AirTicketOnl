@@ -46,10 +46,10 @@
                                                         <td>
                                                             {{ $flight->airplane->airplane_name }}
                                                         </td>
+                                                        <td>{{ $flight->arrive_date }}</td>
                                                         <td>
                                                             {{ $flight->depart_date }}
                                                         </td>
-                                                        <td>{{ $flight->arrive_date }}</td>
                                                         <td>{{ $flight->flight_time }}</td>
                                                         <td class="text-center" id="bread-actions">
                                                             <a href="javascript:;" title="Xóa" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $flight->id }}"

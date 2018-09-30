@@ -28,7 +28,7 @@ class CreateFlightsTable extends Migration
                 ->references('id')->on('airplanes')
                 ->onDelete('cascade');
             $table->dateTime('depart_date');
-            $table->dateTime('arrive-date');
+            $table->dateTime('arrive_date');
             $table->decimal('flight_time');
             $table->timestamps();
         });

@@ -1,0 +1,62 @@
+.container-fluid{
+    padding: 0;
+}
+.item{
+    width: 100%;
+    height: 400px;
+}
+.img-place{
+    width: 100%;
+}
+#about{
+    padding-top: 4%;
+}
+#handbook, #find-flight, #contact{
+    padding-top: 3.7%;
+}
+.places, .dishes{
+    padding-bottom: 5%;
+}
+.space-contact{
+    margin-top: 3%;
+    width: 100%;
+}
+.img-pic{
+    height: 100px;
+    width: 100px;
+}
+.in-for{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.icons2{
+    position: absolute!important;
+    left: 25px!important;
+    top: 58px!important;
+    color: #2E8B57!important;
+}
+.inputs{
+    padding-left: 40px;
+}
+.flight-bar{
+    background-color: #2E8B57;
+    color: #fff;
+    z-index: 1;
+    opacity: 0.9;
+}
+.flight-row{
+    padding: 0 1%;
+}
+.tab{
+    padding: 1% 0 1% 2%;
+}
+.select-adult{
+    position: absolute;
+    width:75%;
+}
+div.submit{
+    margin-top: 13%;
+}
+#idNV{
+    display: none;
+}
