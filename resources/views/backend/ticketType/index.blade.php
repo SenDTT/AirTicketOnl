@@ -4,8 +4,8 @@
 
 @section('page_header')
     <div class="container-fluid">
-        <h1 class="page-title"><i class="icon voyager-logbook"></i> Flights</h1>
-        <a href="{{ URL::route('flights.create') }}" class="btn btn-success btn-add-new">
+        <h1 class="page-title"><i class="icon voyager-logbook"></i> Loại vé</h1>
+        <a href="{{ URL::route('ticketType.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
         </a>
     @stop
@@ -26,37 +26,21 @@
                                                     <thead>
                                                     <tr>
                                                         <th>#ID</th>
-                                                        <th>Tên chuyến bay</th>
-                                                        <th>Tuyến đường</th>
-                                                        <th>Hãng máy bay</th>
-                                                        <th>Tên máy bay</th>
-                                                        <th>Giờ khỏi hành</th>
-                                                        <th>Giờ hạ cánh</th>
-                                                        <th>Số giờ bay</th>
+                                                        <th>Tên loại vé</th>
                                                         <th class="text-right">{{ __('voyager::generic.actions') }}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($flights  as $key => $flight)
+                                                    @foreach($ticketTypes  as $key => $ticketType)
                                                         <tr role="row">
-                                                        <td>#{{ $flight->id }}</td>
-                                                        <td>{{ $flight->name }}</td>
-                                                        <td>{{ $flight->route->route_name }}</td>
-                                                        <td>{{ $flight->airline->airline_name }}</td>
-                                                        <td>
-                                                            {{ $flight->airplane->airplane_name }}
-                                                        </td>
-                                                        <td>{{ $flight->arrive_date }}</td>
-                                                        <td>
-                                                            {{ $flight->depart_date }}
-                                                        </td>
-                                                        <td>{{ $flight->flight_time }}</td>
+                                                        <td>#{{ $ticketType->id }}</td>
+                                                        <td>{{ $ticketType->ticket_type_name }}</td>
                                                         <td class="text-center" id="bread-actions">
-                                                            <a href="javascript:;" title="Xóa" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $flight->id }}"
-                                                               id="delete-{{ $flight->id }}">
+                                                            <a href="javascript:;" title="Xóa" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $ticketType->id }}"
+                                                               id="delete-{{ $ticketType->id }}">
                                                                 <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Xóa</span>
                                                             </a>
-                                                            <a href="{{ URL::route('flights.edit',$flight->id) }}" title="Chỉnh sửa" class="btn btn-sm btn-primary pull-right edit">
+                                                            <a href="{{ URL::route('ticketType.edit',$ticketType->id) }}" title="Chỉnh sửa" class="btn btn-sm btn-primary pull-right edit">
                                                                 <i class="voyager-edit"></i> <span
                                                                         class="hidden-xs hidden-sm">
                                                                     {{ __('voyager::generic.edit') }}
@@ -132,7 +116,7 @@
 
             var deleteFormAction;
             $('td').on('click', '.delete', function (e) {
-                $('#delete_form')[0].action = '{{ route('flights.destroy', ['id' => '__id']) }}'.replace('__id', $(this).data('id'));
+                $('#delete_form')[0].action = '{{ route('airports.destroy', ['id' => '__id']) }}'.replace('__id', $(this).data('id'));
                 $('#delete_modal').modal('show');
             });
         </script>

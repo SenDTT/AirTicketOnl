@@ -16,7 +16,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware'=>'auth'], function () {
 
     Route::resource('locations', 'LocationsController');
     Route::resource('banks', 'BanksController');
@@ -26,6 +26,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('airlines', 'AirlineController');
     Route::resource('routes', 'RouteController');
     Route::resource('airports', 'AirportController');
+    Route::resource('ticketType', 'TicketTypeController');
+    Route::resource('ticketTypePrices', 'TicketTypePricesController');
+
+
 });
 Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
     Route::get('home', [

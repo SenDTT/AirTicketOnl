@@ -9,6 +9,7 @@ class Flight extends Model
     protected $table = 'flights';
 
     protected $fillable = [
+        'name',
         'route_id',
         'airline_id',
         'airplane_id',
@@ -18,6 +19,7 @@ class Flight extends Model
     ];
 
     static public $rules = [
+        'name' => 'required|min:1:max:255',
         'route_id' => 'required|min:1:max:255',
         'airline_id' => 'required|min:1:max:255',
         'airplane_id' => 'required',

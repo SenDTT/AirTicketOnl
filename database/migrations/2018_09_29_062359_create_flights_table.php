@@ -15,6 +15,7 @@ class CreateFlightsTable extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->integer('route_id')->unsigned();
             $table->foreign('route_id')
                 ->references('id')->on('routes')

@@ -4,7 +4,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
-@section('page_title', __('voyager::generic.edit'))
+@section('page_title', __('voyager::generic.add'))
 
 @section('page_header')
     <h1 class="page-title">
@@ -21,56 +21,29 @@
                 <div class="panel panel-bordered">
                     <!-- form start -->
                     <?= Form::open([
-                        'url' => URL::route('flights.update',$flight->id),
+                        'url' => URL::route('ticketTypePrices.update',$ticketTypePrice->id),
                         'method' =>'put',
                         'class'=>'form-add'
                     ])?>
 
                         <div class="panel-body">
-                            <div class="form-group col-md-12 {{ form_error_class('name', $errors) }}">
-                                <label for="arrive_date">Tên chuyến bay</label>
-                                <?= Form::text('name',$flight->name,['class'=>'form-control','placeholder'=>'Tên chuyến bay']); ?>
-                                <p class="block-helper text-primary">Tên chuyến bay</p>
-                                {!! form_error_message('name', $errors) !!}
+                            <div class="form-group col-md-12 {{ form_error_class('flight_id', $errors) }}">
+                                <label for="Ticket-Type">Chuyến bay</label>
+                                <?= Form::select('flight_id',$flights,$ticketTypePrice->flight_id,['class'=>'form-control select2']); ?>
+                                <p class="block-helper text-primary">Chuyến bay</p>
+                                {!! form_error_message('flight_id', $errors) !!}
                             </div>
-                            <div class="form-group col-md-12 {{ form_error_class('route_id', $errors) }}">
-                                <label for="route_id">Tên tuyến đường</label>
-                                <?= Form::select('route_id',$routes,$flight->route_id,['class'=>'form-control select2']); ?>
-                                <p class="block-helper text-primary">Tên tuyến đường</p>
-                                {!! form_error_message('route_id', $errors) !!}
+                            <div class="form-group col-md-12 {{ form_error_class('ticket_type_id', $errors) }}">
+                                <label for="Ticket-Type">Ticket Type</label>
+                                <?= Form::select('ticket_type_id',$ticketType,$ticketTypePrice->ticket_type_id,['class'=>'form-control select2']); ?>
+                                <p class="block-helper text-primary">Loại vé</p>
+                                {!! form_error_message('ticket_type_id', $errors) !!}
                             </div>
-                            <div class="form-group  col-md-12">
-                                <label for="title">Airline</label>
-                                <?= Form::select('airline_id',$airlines,$flight->airline_id,['class'=>'form-control select2']); ?>
-                                <p class="block-helper text-primary">Hãng hàng không</p>
-                                {!! form_error_message('airline_id', $errors) !!}
-                            </div>
-                            <div class="form-group col-md-12 {{ form_error_class('airplane_id', $errors) }}">
-                                <label for="position">Airplane</label>
-                                <?= Form::select('airplane_id',$airplanes,$flight->airplane_id,['class'=>'form-control select2']); ?>
-                                <p class="block-helper text-primary">Loại máy bay</p>
-                                {!! form_error_message('airplane_id', $errors) !!}
-                            </div>
-
-                            <div class="form-group col-md-12 {{ form_error_class('arrive_date', $errors) }}">
-                                <label for="arrive_date">Arrive date</label>
-                                <?= Form::text('arrive_date',$flight->arrive_date,['class'=>'form-control','placeholder'=>'Ngày đi']); ?>
-                                <p class="block-helper text-primary">Ngày đi</p>
-                                {!! form_error_message('arrive_date', $errors) !!}
-                            </div>
-
-                            <div class="form-group col-md-12 {{ form_error_class('depart_date', $errors) }}">
-                                <label for="arrive_date">Depart Date</label>
-                                <?= Form::text('depart_date',$flight->depart_date,['class'=>'form-control','placeholder'=>'Ngày đến']); ?>
-                                <p class="block-helper text-primary">Ngày đến</p>
-                                {!! form_error_message('depart_date', $errors) !!}
-                            </div>
-
-                            <div class="form-group col-md-12 {{ form_error_class('flight_time', $errors) }}">
-                                <label for="arrive_date">flight time</label>
-                                <?= Form::text('flight_time',$flight->flight_time,['class'=>'form-control','placeholder'=>'Số giờ bay']); ?>
-                                <p class="block-helper text-primary">Số giờ bay</p>
-                                {!! form_error_message('flight_time', $errors) !!}
+                            <div class="form-group col-md-12 {{ form_error_class('price', $errors) }}">
+                                <label for="name">Giá vé</label>
+                                <?= Form::number('price',$ticketTypePrice->price,['class'=>'form-control']); ?>
+                                <p class="block-helper text-primary">Giá vé</p>
+                                {!! form_error_message('price', $errors) !!}
                             </div>
                         </div><!-- panel-body -->
 
@@ -165,29 +138,6 @@
                 $('#confirm_delete_modal').modal('hide');
             });
             $('[data-toggle="tooltip"]').tooltip();
-
-            // ajax get content
-            function getContent(type) {
-                $.ajaxSetup({
-                    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
-                });
-                $.ajax({
-                    type: 'POST',
-                    url: '/admin/widgets/get-content',
-                    data: {'type': type},
-                    success: function (data) {
-                        $('.js-content').html(data.content);
-                        InitTinyMce();
-                    },
-                    error: function (error) {}
-                });
-            }
-
-            getContent($('#type').val());
-
-            $('.js-get-content').change(function (e) {
-                getContent($('#type').val());
-            });
 
         });
     </script>
