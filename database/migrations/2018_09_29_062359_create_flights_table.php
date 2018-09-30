@@ -15,6 +15,7 @@ class CreateFlightsTable extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->integer('route_id')->unsigned();
             $table->foreign('route_id')
                 ->references('id')->on('routes')
@@ -28,7 +29,7 @@ class CreateFlightsTable extends Migration
                 ->references('id')->on('airplanes')
                 ->onDelete('cascade');
             $table->dateTime('depart_date');
-            $table->dateTime('arrive-date');
+            $table->dateTime('arrive_date');
             $table->decimal('flight_time');
             $table->timestamps();
         });

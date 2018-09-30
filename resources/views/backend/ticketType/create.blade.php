@@ -20,58 +20,18 @@
 
                 <div class="panel panel-bordered">
                     <!-- form start -->
-                    <form role="form" class="form-add" action="{{ URL::route('flights.store') }}"
+                    <form role="form" class="form-add" action="{{ URL::route('ticketType.store') }}"
                           method="POST" enctype="multipart/form-data">
                         <!-- CSRF TOKEN -->
                         {{ csrf_field() }}
 
                         <div class="panel-body">
-                            <div class="form-group col-md-12 {{ form_error_class('name', $errors) }}">
-                                <label for="arrive_date">Tên chuyến bay</label>
-                                <?= Form::text('name',null,['class'=>'form-control','placeholder'=>'Tên chuyến bay']); ?>
-                                <p class="block-helper text-primary">Tên chuyến bay</p>
-                                {!! form_error_message('name', $errors) !!}
+                            <div class="form-group col-md-12 {{ form_error_class('ticket_type_name', $errors) }}">
+                                <label for="name">Ticket Type Name</label>
+                                <?= Form::text('ticket_type_name',null,['class'=>'form-control']); ?>
+                                <p class="block-helper text-primary">Ticket Type Name</p>
+                                {!! form_error_message('ticket_type_name', $errors) !!}
                             </div>
-                            <div class="form-group col-md-12 {{ form_error_class('route_id', $errors) }}">
-                                <label for="route_id">Tên tuyến đường</label>
-                                <?= Form::select('route_id',$routes,null,['class'=>'form-control select2']); ?>
-                                <p class="block-helper text-primary">Tên tuyến đường</p>
-                                {!! form_error_message('route_id', $errors) !!}
-                            </div>
-                            <div class="form-group  col-md-12">
-                                <label for="title">Airline</label>
-                                <?= Form::select('airline_id',$airlines,null,['class'=>'form-control select2']); ?>
-                                <p class="block-helper text-primary">Hãng hàng không</p>
-                                {!! form_error_message('airline_id', $errors) !!}
-                            </div>
-                            <div class="form-group col-md-12 {{ form_error_class('airplane_id', $errors) }}">
-                                <label for="position">Airplane</label>
-                                <?= Form::select('airplane_id',$airplanes,null,['class'=>'form-control select2']); ?>
-                                <p class="block-helper text-primary">Loại máy bay</p>
-                                {!! form_error_message('airplane_id', $errors) !!}
-                            </div>
-
-                            <div class="form-group col-md-12 {{ form_error_class('arrive_date', $errors) }}">
-                                <label for="arrive_date">Arrive date</label>
-                                <?= Form::text('arrive_date',null,['class'=>'form-control','placeholder'=>'Ngày đi']); ?>
-                                <p class="block-helper text-primary">Ngày đi</p>
-                                {!! form_error_message('arrive_date', $errors) !!}
-                            </div>
-
-                            <div class="form-group col-md-12 {{ form_error_class('depart_date', $errors) }}">
-                                <label for="arrive_date">Depart Date</label>
-                                <?= Form::text('depart_date',null,['class'=>'form-control','placeholder'=>'Ngày đến']); ?>
-                                <p class="block-helper text-primary">Ngày đến</p>
-                                {!! form_error_message('depart_date', $errors) !!}
-                            </div>
-
-                            <div class="form-group col-md-12 {{ form_error_class('flight_time', $errors) }}">
-                                <label for="arrive_date">flight time</label>
-                                <?= Form::text('flight_time',null,['class'=>'form-control','placeholder'=>'Số giờ bay']); ?>
-                                <p class="block-helper text-primary">Số giờ bay</p>
-                                {!! form_error_message('flight_time', $errors) !!}
-                            </div>
-
                         </div><!-- panel-body -->
 
                         <div class="panel-footer" style="padding: 15px 30px">

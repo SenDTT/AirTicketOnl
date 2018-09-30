@@ -15,3 +15,11 @@ if (!function_exists('form_error_message')) {
             '<p class="block-helper text-danger">:message</p>');
     }
 }
+
+if (!function_exists('format_currency')) {
+    function format_currency($number)
+    {
+        $number = number_format($number,0,',','.');
+        return $number;
+    }
+}
