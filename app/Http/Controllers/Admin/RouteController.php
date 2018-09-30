@@ -32,8 +32,8 @@ class RouteController extends Controller
         $location_code_to = Locations::find($request->airport_id_to);
 
         $attributes = array_merge($attributes,[
-            'location_code_from' => $location_code_from->id,
-            'location_code_to' => $location_code_to->id
+            'location_code_from' => $location_code_from->location_id,
+            'location_code_to' => $location_code_to->location_id
         ]);
 
         Route::create($attributes);
@@ -66,12 +66,13 @@ class RouteController extends Controller
 
         $attributes = request()->validate(Route::$rules);
 
-        $location_code_from = Locations::find($request->airport_id_from);
-        $location_code_to = Locations::find($request->airport_id_to);
+        $location_code_from = Airport::find($request->airport_id_from);
+        $location_code_to = Airport::find($request->airport_id_to);
+
 
         $attributes = array_merge($attributes,[
-            'location_code_from' => $location_code_from->id,
-            'location_code_to' => $location_code_to->id
+            'location_code_from' => $location_code_from->location_id,
+            'location_code_to' => $location_code_to->location_id
         ]);
 
 

@@ -26,17 +26,18 @@ $(document).ready(function(){
         } // End if
     });
 })
-document.querySelector('#todaygo').valueAsDate = new Date();
-document.querySelector('#todayback').valueAsDate = new Date();
+//document.querySelector('#todaygo').valueAsDate = new Date();
+//document.querySelector('#todayback').valueAsDate = new Date();
 document.querySelector('#todaygo').min = new Date();
 document.querySelector('#todayback').min = new Date();
 //checkBox
 function myFunc(){
-    var checkbox = document.getElementById('checkbox');
+    var checkbox = $('#checkbox').val();
+
     var div = document.getElementById('idNV');
     if(checkbox.checked == true){
-        div.style.display = "block";
+        $('#idNV').show();
     }else{
-        div.style.display = "none";
+        $('#idNV').hide();
     }
 }

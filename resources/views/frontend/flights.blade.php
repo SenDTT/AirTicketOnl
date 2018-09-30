@@ -55,11 +55,15 @@
             <div class="tittle">
                 <div class="row info-tittle">
                     <div class="col-sm-9">
+                        <?php
+                        $locationFrom = \App\Locations::find($from);
+                        $locationTo = \App\Locations::find($to);
+                        ?>
                         <div class="info-search">
                             <ul class="list-inline h3">
-                                <li>{{$from}} - Sân bay</li>
+                                <li>{{$locationFrom->location_name}}</li>
                                 <li><span class="glyphicon glyphicon-transfer"></span></li>
-                                <li>{{$to}} - Sân bay</li>
+                                <li>{{$locationTo->location_name}}</li>
                             </ul>
                             <ul class="list-inline">
                                 <li>{{$date}} @if($returnDate != 'NA') - {{$returnDate}}@endif</li>
@@ -179,13 +183,14 @@
             <div class="result-search">
                 <div class="flight-info">
                     <ul class="list-inline flights-tittle">
+
                         <li><h3>Chuyến đi</h3></li>
                         <li>
                             <blockquote>
                                 <ul class="list-inline">
-                                    <li>{{$from}} - Sân bay</li>
+                                    <li>{{$locationFrom->location_name}}</li>
                                     <li><span class="glyphicon glyphicon-transfer"></span></li>
-                                    <li>{{$to}} - Sân bay</li>
+                                    <li>{{$locationTo->location_name}}</li>
                                 </ul>
                                 <label>{{$date}}</label>
                             </blockquote>
@@ -193,6 +198,7 @@
                     </ul>
                     <div class="row text-center thead ">
                         <div class="col-sm-2">Hãng</div>
+                        <div class="col-sm-2">Name</div>
                         <div class="col-sm-2">Giờ cất cánh</div>
                         <div class="col-sm-2">Giờ hạ cánh</div>
                         <div class="col-sm-2">Thời gian bay</div>
@@ -200,14 +206,19 @@
                         <div class="col-sm-2"></div>
                     </div>
                     <div class="list-unstyled">
-                        @foreach($flights as $flight)
+                        @foreach($flights as $k => $flight)
+                            <?php
+                                $airportFrom = \App\Airport::find($flight->route->airport_id_from);
+                                $airportTo = \App\Airport::find($flight->route->airport_id_to);
+                            ?>
                             <div class="flight">
                                 <div class="row text-center">
                                     <div class="col-sm-2"><img src="https://ibev2.maybay.net/Statics/Images/Airline/vj.gif" alt="name" ></div>
-                                    <div class="col-sm-2">{{$flight->from}} <br> {{$flight->Departs_at}}</div>
-                                    <div class="col-sm-2">{{$flight->to}} <br> {{$flight->Arrives_at}}</div>
+                                    <div class="col-sm-2">{{ $flight->name }}</div>
+                                    <div class="col-sm-2">{{$locationFrom->location_name}} <br> {{$flight->depart_date}}</div>
+                                    <div class="col-sm-2">{{$locationTo->location_name}} <br> {{$flight->arrive_date}}</div>
                                     <div class="col-sm-2">{{$flight->Model_ID}} <br>
-                                        <label data-toggle="collapse" data-target="#flightDetail" class="small">Chi tiết
+                                        <label data-toggle="collapse" data-target="#flightDetail{{$k}}" class="small">Chi tiết
                                             <span class="glyphicon glyphicon-triangle-right"></span>
                                         </label>
                                     </div>
@@ -216,29 +227,29 @@
                                         <input type="submit" class="form-control btn btn-primary" value="Chọn">
                                     </div>
                                 </div>
-                                <div class="collapse" id="flightDetail">
+                                <div class="collapse" id="flightDetail{{$k}}">
                                     <form class="detail" method="get" action="{{route('info')}}">
                                         <div class="row">
                                             <div class="col-sm-1"><img src="https://ibev2.maybay.net/Statics/Images/Airline/vj.gif" alt="name" ></div>
                                             <div class="col-sm-2 text-right">
                                                 <ul class="list-unstyled">
-                                                    <li value="{{$from}}" class="text-capitalize">{{$from}}</li>
-                                                    <li>sân bay</li>
-                                                    <li value="{{$date}}" class="time-date">time - {{$date}}</li>
+                                                    <li class="text-capitalize">{{$locationFrom->location_name}}</li>
+                                                    <li>{{$airportFrom->airport_name}}</li>
+                                                    <li class="time-date">{{$flight->depart_date}}</li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4 text-center">
                                                 <ul class="list-unstyled">
                                                     <li value="">Chuyến bay: </li>
                                                     <li><i class="material-icons">flight_takeoff</i></li>
-                                                    <li value="">thời gian bay: </li>
+                                                    <li value="">thời gian bay: {{$flight->flight_time}}</li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-2 text-left">
                                                 <ul class="list-unstyled">
-                                                    <li value="{{$to}}" class="text-capitalize">{{$to}}</li>
-                                                    <li>sân bay</li>
-                                                    <li value="{{$date}}" class="time-date">time - ngay tới</li>
+                                                    <li class="text-capitalize">{{$locationTo->location_name}}</li>
+                                                    <li>{{$airportTo->airport_name}}</li>
+                                                    <li class="time-date">{{$flight->arrive_date}}</li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-2">

@@ -22,16 +22,20 @@ class PostController extends Controller
 
         // viet cau truy van
 
-        $flights = Flight::select('*')
-            ->join('routes', 'routes.id', '=', 'flights.id')
+        $flights = Flight::with('route')->select('*')
+            ->join('routes', 'routes.id', '=', 'flights.route_id')
             ->where('routes.location_code_from',$from)
             ->where('routes.location_code_to',$to)
-            ->whereDate('flights.depart_date', '=', $date)
+            ->where(function ($q) use ($date, $returnDate){
+                $q->whereDate('flights.depart_date', '=', $date)
+                    ->orWhereDate('flights.depart_date', '=', $returnDate);
+            })
             ->get();
 
-        return view('frontend.flights')->with(['locations' => $locations, 'flights' => $flights,'from' => $from, 'to' => $to,
+        return view('frontend.flights',['locations' => $locations, 'flights' => $flights,'from' => $from, 'to' => $to,
             'date' => $date, 'returnDate' => $returnDate, 'adult' => (int)$adult,
             'child' => (int)$child, 'baby' => (int)$baby]);
+
     }
 
     public function postHome(Request $request){
@@ -57,18 +61,11 @@ class PostController extends Controller
             ]
         );
 
-
         if($validator->fails()){
             return redirect('home')->withErrors($validator)->withInput();
         }else{
-            $from = DB::table('locations')
-                ->select('location_name')
-                ->where('locations.id', '=', $request->txtFrom)
-                ->get();
-            $to = DB::table('locations')
-                ->select('location_name')
-                ->where('locations.id', '=', $request->txtTo)
-                ->get();
+            $from = $request->txtFrom;
+            $to = $request->txtTo;
             $date = $request->txtDate;
             if (isset($request->cbReturnDate)) {
                 $returnDate = $request->txtReturnDate;
@@ -79,6 +76,7 @@ class PostController extends Controller
             $adult = $request->txtAdult;
             $child = $request->txtChild;
             $baby = $request->txtBaby;
+
             return redirect("/flights/".$from."/".$to."/".$date."/".$returnDate."/".$adult."/".$child."/".$baby)->with(['locations' => $locations]);
         }
     }
