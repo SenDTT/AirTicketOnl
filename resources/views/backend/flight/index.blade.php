@@ -8,6 +8,7 @@
         <a href="{{ URL::route('flights.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
         </a>
+    </div>
     @stop
 
         @section('content')
@@ -33,6 +34,7 @@
                                                         <th>Giờ khỏi hành</th>
                                                         <th>Giờ hạ cánh</th>
                                                         <th>Số giờ bay</th>
+                                                        <th>Giá chuyến bay</th>
                                                         <th class="text-right">{{ __('voyager::generic.actions') }}</th>
                                                     </tr>
                                                     </thead>
@@ -43,14 +45,11 @@
                                                         <td>{{ $flight->name }}</td>
                                                         <td>{{ $flight->route->route_name }}</td>
                                                         <td>{{ $flight->airline->airline_name }}</td>
-                                                        <td>
-                                                            {{ $flight->airplane->airplane_name }}
-                                                        </td>
+                                                        <td>{{ $flight->airplane->airplane_name }}</td>
                                                         <td>{{ $flight->arrive_date }}</td>
-                                                        <td>
-                                                            {{ $flight->depart_date }}
-                                                        </td>
+                                                        <td>{{ $flight->depart_date }}</td>
                                                         <td>{{ $flight->flight_time }}</td>
+                                                        <td>{{ $flight->flight_price }}</td>
                                                         <td class="text-center" id="bread-actions">
                                                             <a href="javascript:;" title="Xóa" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $flight->id }}"
                                                                id="delete-{{ $flight->id }}">

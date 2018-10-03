@@ -17,7 +17,7 @@
 @yield('content')
 
 <footer>
-    <label class=" text-center"><a class="up-arrow" href="#home" data-toggle="tooltip" title="TO TOP">
+    <label class=" text-center"><a class="up-arrow" href="{{route('home')}}" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
         </a><br><br></label>
     <div class="row">

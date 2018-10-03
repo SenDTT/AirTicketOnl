@@ -90,6 +90,9 @@
                                 </span>
                                 <input type="date" class="form-control" id="toDate" name="txtDate" aria-describedby="add-on-date" required/>
                             </div>
+                            @if($errors->has('txtDate'))
+                                <label class="text-danger">{!! $errors->first('txtDate') !!}</label>
+                            @endif
                             <h5><input type="checkbox" id="checkbox" onclick="myFunc()" name="cbReturnDate"> Ngày về</h5>
                             <div id="idReturnDate">
                                 <div class="input-group">
@@ -100,6 +103,9 @@
                                            aria-describedby="add-on-return-date" required/>
                                 </div>
                             </div>
+                            @if($errors->has('txtReturnDate'))
+                                <label class="text-danger">{!! $errors->first('txtReturnDate') !!}</label>
+                            @endif
                         </div>
                         {{----}}
                         <div class="col-sm-3">

@@ -27,21 +27,33 @@
 
                         <div class="panel-body">
                             <div class="form-group col-md-12 {{ form_error_class('airline_code', $errors) }}">
-                                <label for="name">airline code</label>
-                                <?= Form::text('airline_code',null,['class'=>'form-control']); ?>
-                                <p class="block-helper text-primary">airline_code</p>
+                                <label for="name">Airline Code</label>
+                                <?= Form::text('airline_code',null,['class'=>'form-control','placeholder'=>'Airline Code']); ?>
+                                <p class="block-helper text-primary">Mã hãng hàng không</p>
                                 {!! form_error_message('airline_code', $errors) !!}
                             </div>
                             <div class="form-group  col-md-12">
-                                <label for="title">airline_name</label>
-                                <?= Form::text('airline_name',null,['class'=>'form-control','placeholder'=>'airline_name']); ?>
-                                <p class="block-helper text-primary">airline_name</p>
+                                <label for="title">Airline Name</label>
+                                <?= Form::text('airline_name',null,['class'=>'form-control','placeholder'=>'Airline Name']); ?>
+                                <p class="block-helper text-primary">Tên hãng hàng không</p>
                                 {!! form_error_message('airline_name', $errors) !!}
                             </div>
                             <div class="form-group  col-md-12">
-                                <label for="title">airline_img</label>
-                                <?= Form::text('airline_img',null,['class'=>'form-control','placeholder'=>'airline_img']); ?>
-                                <p class="block-helper text-primary">airline_img</p>
+                                <label for="title">Carry on</label>
+                                <?= Form::text('carry_on',null,['class'=>'form-control','placeholder'=>'Carry on']); ?>
+                                <p class="block-helper text-primary">Hành lý xách tay</p>
+                                {!! form_error_message('carry_on', $errors) !!}
+                            </div>
+                            <div class="form-group  col-md-12">
+                                <label for="title">Check in baggage</label>
+                                <?= Form::text('check_in_baggage',null,['class'=>'form-control','placeholder'=>'Check in baggage']); ?>
+                                <p class="block-helper text-primary">Hành lý ký gửi</p>
+                                {!! form_error_message('check_in_baggage', $errors) !!}
+                            </div>
+                            <div class="form-group  col-md-12">
+                                <label for="title">Image Link</label>
+                                <?= Form::text('airline_img',null,['class'=>'form-control','placeholder'=>'Image Link']); ?>
+                                <p class="block-helper text-primary">Link hình ảnh</p>
                                 {!! form_error_message('airline_img', $errors) !!}
                             </div>
                         </div><!-- panel-body -->

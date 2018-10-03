@@ -22,14 +22,13 @@ class PostController extends Controller
 
         // viet cau truy van
 
-        $flights = Flight::with('route')->select('*')
-            ->join('routes', 'routes.id', '=', 'flights.route_id')
+        $flights = Flight::with('route', 'airline', 'airplane')->select('*')
+            ->leftJoin('routes', 'routes.id', '=', 'flights.route_id')
+            ->leftJoin('airlines', 'airlines.id', '=', 'flights.airline_id')
+            ->leftJoin('airplanes', 'airplanes.id', '=', 'flights.airplane_id')
             ->where('routes.location_code_from',$from)
             ->where('routes.location_code_to',$to)
-            ->where(function ($q) use ($date, $returnDate){
-                $q->whereDate('flights.depart_date', '=', $date)
-                    ->orWhereDate('flights.depart_date', '=', $returnDate);
-            })
+            ->whereDate('flights.depart_date', '=', $date)
             ->get();
 
         return view('frontend.flights',['locations' => $locations, 'flights' => $flights,'from' => $from, 'to' => $to,
@@ -43,11 +42,15 @@ class PostController extends Controller
         $validator =  Validator::make($request->all(),
             [
                 'txtFrom' => 'required',
-                'txtTo' => 'required',
+                'txtTo' => 'required|different:txtFrom',
+                'txtDate' => 'date|after:yesterday',
             ],
             [
                 'txtFrom.required' => 'Vui lòng chọn điểm đi',
                 'txtTo.required' => 'Vui lòng chọn điểm đến',
+                'txtTo.different' => 'Điểm đến phải khác điểm đi',
+                'txtDate.after' => 'Ngày đi phải sau ngày hôm qua',
+                'txtReturnDate.after' => 'Ngày về phải sau ngày đi',
             ],
             [
                 'txtFrom' => 'from',

@@ -4,13 +4,14 @@
 
 @section('page_header')
     <div class="container-fluid">
-        <h1 class="page-title"><i class="icon voyager-logbook"></i> Tuyến đường</h1>
+        <h1 class="page-title"><i class="icon voyager-logbook"></i> Routes </h1>
         <a href="{{ URL::route('routes.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
         </a>
-    @stop
+    </div>
+@stop
 
-        @section('content')
+@section('content')
             <div class="page-content browse container-fluid">
                 @include('voyager::alerts')
                 <div class="row">
@@ -89,11 +90,11 @@
             </div><!-- /.modal -->
         @stop
 
-    @section('css')
+@section('css')
 
-    @stop
+@stop
 
-    @section('javascript')
+@section('javascript')
         <script>
             $(document).ready(function () {
                 var table = $('#dataTable').DataTable({!! json_encode(

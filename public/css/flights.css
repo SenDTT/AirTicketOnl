@@ -80,3 +80,8 @@ blockquote{
 .material-icons{
     color: dodgerblue;
 }
+.flight_details{
+    border: 1px solid;
+    margin: 15px;
+    padding: 10px;
+}

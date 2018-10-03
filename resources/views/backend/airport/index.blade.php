@@ -8,9 +8,10 @@
         <a href="{{ URL::route('airports.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
         </a>
+    </div>
     @stop
 
-        @section('content')
+    @section('content')
             <div class="page-content browse container-fluid">
                 @include('voyager::alerts')
                 <div class="row">

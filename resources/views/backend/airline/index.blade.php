@@ -8,9 +8,10 @@
         <a href="{{ URL::route('airlines.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
         </a>
+    </div>
     @stop
 
-        @section('content')
+@section('content')
             <div class="page-content browse container-fluid">
                 @include('voyager::alerts')
                 <div class="row">
@@ -26,8 +27,10 @@
                                                     <thead>
                                                     <tr>
                                                         <th>#ID</th>
-                                                        <th>airline_code</th>
-                                                        <th>airline_name</th>
+                                                        <th>Airline Code</th>
+                                                        <th>Airline Name</th>
+                                                        <th>Carry on</th>
+                                                        <th>Check in baggage</th>
                                                         <th>airline_img</th>
                                                         <th class="text-right">{{ __('voyager::generic.actions') }}</th>
                                                     </tr>
@@ -42,9 +45,9 @@
                                                             </div>
                                                         </td>
                                                         <td>{{ $airline->airline_name }}</td>
-                                                        <td>
-                                                            {{ $airline->airline_img }}
-                                                        </td>
+                                                        <td>{{ $airline->carry_on }}</td>
+                                                        <td>{{ $airline->check_in_baggage }}</td>
+                                                        <td><img src="{{ $airline->airline_img }}" >                                                        </td>
 
                                                         <td class="text-center" id="bread-actions">
                                                             <a href="javascript:;" title="Xóa" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $airline->id }}"
@@ -93,11 +96,11 @@
             </div><!-- /.modal -->
         @stop
 
-    @section('css')
+@section('css')
 
-    @stop
+@stop
 
-    @section('javascript')
+@section('javascript')
         <script>
             $(document).ready(function () {
                 var table = $('#dataTable').DataTable({!! json_encode(

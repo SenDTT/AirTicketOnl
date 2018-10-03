@@ -28,7 +28,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware'=>'auth'],
     Route::resource('airports', 'AirportController');
     Route::resource('ticketType', 'TicketTypeController');
     Route::resource('ticketTypePrices', 'TicketTypePricesController');
-
+    Route::resource('airplaneModel', 'AirplaneModelController');
+    Route::resource('airplaneClass', 'AirplaneClassController');
+    Route::resource('baggagePrices', 'BaggagePricesController');
+    Route::resource('reservations', 'ReservationsController');
+    Route::resource('reservationDetails', 'ReservationDetailsController');
+    Route::resource('tickets', 'TicketsController');
 
 });
 Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
@@ -49,7 +54,3 @@ Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
         function (){return view('frontend.info');}
     ]);
 });
-Route::post('/info', [
-    'as' => 'info',
-    function (){return view('info');}
-]);

@@ -72,6 +72,12 @@
                                 <p class="block-helper text-primary">Số giờ bay</p>
                                 {!! form_error_message('flight_time', $errors) !!}
                             </div>
+                            <div class="form-group col-md-12 {{ form_error_class('flight_price', $errors) }}">
+                                <label for="arrive_date">flight price</label>
+                                <?= Form::text('flight_price',$flight->flight_time,['class'=>'form-control','placeholder'=>'Giá chuyến bay']); ?>
+                                <p class="block-helper text-primary">Giá chuyến bay</p>
+                                {!! form_error_message('flight_price', $errors) !!}
+                            </div>
                         </div><!-- panel-body -->
 
                         <div class="panel-footer" style="padding: 15px 30px">

@@ -88,13 +88,13 @@
                 </div>
                 <div class="collapse" id="findFlights">
                     <div id="flights" class="tab-pane fade in active">
-                        <form method="post" action="{{route('postHome')}}" class=" findFlights-flights">
+                        <form method="post" action="{{route('postHome')}}">
                             {{ csrf_field() }}
                             <div class="row form-group">
                                 {{--From ...city To ... city--}}
-                                <div class="col-sm-3 col-location">
+                                <div class="col-sm-3">
                                     <h5>Điểm đi</h5>
-                                    <select name="txtFrom" class="form-control list-unstyled">
+                                    <select  name="txtFrom" class="form-control list-unstyled">
                                         @foreach($locations as $location)
                                             <option class="li-locations" value="{{ $location->id }}">{{$location->location_name}}({{$location->location_code}})</option>
                                         @endforeach
@@ -102,8 +102,9 @@
                                     @if($errors->has('txtFrom'))
                                         <label class="text-danger">{!! $errors->first('txtFrom') !!}</label>
                                     @endif
+
                                     <h5>Điểm đến</h5>
-                                    <select  class="form-control list-unstyled">
+                                    <select name="txtTo" class="form-control list-unstyled" >
                                         @foreach($locations as $location)
                                             <option class="li-locations" value="{{ $location->id }}">{{$location->location_name}}({{$location->location_code}})</option>
                                         @endforeach
@@ -132,7 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                {{----}}
                                 <div class="col-sm-3">
                                     <h5>Người lớn</h5>
                                     <div class="input-group selects">
@@ -160,7 +161,7 @@
                                         </select>
                                     </div>
                                 </div>
-
+                                {{----}}
                                 <div class="col-sm-3">
                                     <h5>Em bé(< 2 tuổi)</h5>
                                     <div class="input-group selects">
@@ -183,7 +184,6 @@
             <div class="result-search">
                 <div class="flight-info">
                     <ul class="list-inline flights-tittle">
-
                         <li><h3>Chuyến đi</h3></li>
                         <li>
                             <blockquote>
@@ -213,7 +213,7 @@
                             ?>
                             <div class="flight">
                                 <div class="row text-center">
-                                    <div class="col-sm-2"><img src="https://ibev2.maybay.net/Statics/Images/Airline/vj.gif" alt="name" ></div>
+                                    <div class="col-sm-2"><img src="{{$flight->airline_img}}" alt="name" ></div>
                                     <div class="col-sm-2">{{ $flight->name }}</div>
                                     <div class="col-sm-2">{{$locationFrom->location_name}} <br> {{$flight->depart_date}}</div>
                                     <div class="col-sm-2">{{$locationTo->location_name}} <br> {{$flight->arrive_date}}</div>
@@ -227,10 +227,10 @@
                                         <input type="submit" class="form-control btn btn-primary" value="Chọn">
                                     </div>
                                 </div>
-                                <div class="collapse" id="flightDetail{{$k}}">
+                                <div class="collapse flight_details" id="flightDetail{{$k}}">
                                     <form class="detail" method="get" action="{{route('info')}}">
                                         <div class="row">
-                                            <div class="col-sm-1"><img src="https://ibev2.maybay.net/Statics/Images/Airline/vj.gif" alt="name" ></div>
+                                            <div class="col-sm-1"><img src="{{$flight->airline_img}}" alt="name" ></div>
                                             <div class="col-sm-2 text-right">
                                                 <ul class="list-unstyled">
                                                     <li class="text-capitalize">{{$locationFrom->location_name}}</li>
@@ -240,9 +240,9 @@
                                             </div>
                                             <div class="col-sm-4 text-center">
                                                 <ul class="list-unstyled">
-                                                    <li value="">Chuyến bay: </li>
+                                                    <li value="">Chuyến bay: {{$flight->name}}</li>
                                                     <li><i class="material-icons">flight_takeoff</i></li>
-                                                    <li value="">thời gian bay: {{$flight->flight_time}}</li>
+                                                    <li value="">Thời gian bay: {{$flight->flight_time}} phút</li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-2 text-left">
@@ -254,9 +254,9 @@
                                             </div>
                                             <div class="col-sm-2">
                                                 <ul class="list-unstyled">
-                                                    <li value="">hạng chỗ: </li>
-                                                    <li value="">Máy bay: </li>
-                                                    <li value="">Hành lý xách tay: </li>
+                                                    <li value="">Hạng chỗ: </li>
+                                                    <li value="">Máy bay: {{$flight->airplane_name}}</li>
+                                                    <li value="">Hành lý xách tay: {{$flight->carry_on}}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -271,7 +271,7 @@
                                                     <tr>
                                                         <td>Người lớn</td>
                                                         <td class="text-center">{{$adult}}</td>
-                                                        <td class="text-center">1334343</td>
+                                                        <td class="text-center"><?php echo $flight->flight_price?></td>
                                                         <td class="text-right">42423432</td>
                                                     </tr>
                                                     @if (($child > 0) && ($child <= 7))
