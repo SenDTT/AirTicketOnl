@@ -9,6 +9,8 @@ class Airplanes extends Model
     protected $table = 'airplanes';
     protected $fillable = [
         'airplane_code',
-        'airplane_name'
+        'airplane_name',
+        'carry_on',
+        'check_in_baggage',
     ];
 }
