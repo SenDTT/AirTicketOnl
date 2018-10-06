@@ -44,4 +44,19 @@ class Flight extends Model
     {
         return $this->belongsTo(Airplanes::class, 'airplane_id', 'id');
     }
+
+    public static function findTicketTypePrice($flight_id)
+    {
+        $ticketTypePrice = TicketTypePrices::select(
+            'ticket_type_prices.id',
+            'ticket_type_prices.ticket_type_id',
+            'ticket_type_prices.flight_id',
+            'ticket_type_prices.price',
+            'ticket_type.ticket_type_name'
+        )
+            ->leftJoin('ticket_type', 'ticket_type.id', '=', 'ticket_type_prices.ticket_type_id')
+            ->where('flight_id',$flight_id)->get();
+
+        return $ticketTypePrice;
+    }
 }

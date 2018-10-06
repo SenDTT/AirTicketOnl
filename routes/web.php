@@ -54,3 +54,8 @@ Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
         function (){return view('frontend.info');}
     ]);
 });
+
+Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
+    Route::get('/','WebsiteController@index')->name('web.index');
+    Route::post('/tim-kiem.html','WebsiteController@search')->name('web.search');
+});
