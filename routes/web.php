@@ -58,4 +58,8 @@ Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
 Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
     Route::get('/','WebsiteController@index')->name('web.index');
     Route::post('/tim-kiem.html','WebsiteController@search')->name('web.search');
+    Route::get('/cart/add-new-ticket','WebsiteController@addNewTicket')->name('web.addNewTicket');
+    Route::get('/cart/remove-ticket','WebsiteController@removeTicket')->name('web.removeTicket');
+    Route::get('/cart/update-ticket','WebsiteController@updateTicket')->name('web.updateTicket');
+    Route::get('/gio-hang.html','WebsiteController@cart')->name('web.cart');
 });

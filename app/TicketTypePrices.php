@@ -33,4 +33,5 @@ class TicketTypePrices extends Model
         return $this->hasOne(TicketType::class, 'id', 'ticket_type_id');
     }
 
+
 }

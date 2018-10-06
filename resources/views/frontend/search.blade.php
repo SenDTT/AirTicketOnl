@@ -270,7 +270,11 @@
                                                         </td>
                                                         <td class="text-center"><?= format_currency($tc->price) ?> VNĐ</td>
                                                         <td class="text-center">
-                                                            <button data-id="<?=$tc->id?>" class="js-buy btn btn-primary">Mua</button>
+                                                            <button data-id="<?=$tc->id?>"
+                                                                    data-name="{{ $tc->ticket_type_name }}"
+                                                                    data-price="{{ $tc->price }}"
+                                                                    data-flight="{{$flight->id  }}"
+                                                                    class="js-buy btn btn-primary">Mua</button>
                                                         </td>
                                                     </tr>
                                                     @endforeach

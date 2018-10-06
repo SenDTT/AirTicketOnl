@@ -5,13 +5,16 @@
     <title>Vé máy bay trực tuyến</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="{{asset("")}}">
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <meta name="_token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/master.css" rel="stylesheet">
-    <link href="css/header.css" rel="stylesheet">
-    <link href="css/ctn-home.css" rel="stylesheet">
-    <link href="css/flights.css" rel="stylesheet">
-    <link href="css/info.css" rel="stylesheet">
+    <link href="{{ asset('css/master.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ asset('library/toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/ctn-home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/flights.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/info.css') }}" rel="stylesheet">
 </head>
 <body>
 @yield('content')
@@ -66,7 +69,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{ asset('bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('library/nprogress/nprogress.js') }}"></script>
+<script src="{{ asset('library/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('js/ctn-home.js') }}"></script>
 <script src="{{ asset('js/home.js') }}"></script>
+<script src="{{ asset('js/cart.js') }}"></script>
 </body>
 </html>

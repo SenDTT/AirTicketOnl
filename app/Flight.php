@@ -55,8 +55,16 @@ class Flight extends Model
             'ticket_type.ticket_type_name'
         )
             ->leftJoin('ticket_type', 'ticket_type.id', '=', 'ticket_type_prices.ticket_type_id')
-            ->where('flight_id',$flight_id)->get();
+            ->where('flight_id', $flight_id)->get();
 
         return $ticketTypePrice;
+    }
+
+
+    public static function findFlight($flight_id)
+    {
+        $flight = Flight::find($flight_id);
+
+        return $flight;
     }
 }
