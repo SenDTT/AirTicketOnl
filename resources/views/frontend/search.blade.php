@@ -266,11 +266,11 @@
                                                     <tr>
                                                         <td>{{ $tc->ticket_type_name }}</td>
                                                         <td class="text-center">
-                                                            <input type="number" value="1" >
+                                                            <input class="js-number" name="number" min="0" max="5" type="number" value="1" >
                                                         </td>
                                                         <td class="text-center"><?= format_currency($tc->price) ?> VNĐ</td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-primary">Mua</button>
+                                                            <button data-id="<?=$tc->id?>" class="js-buy btn btn-primary">Mua</button>
                                                         </td>
                                                     </tr>
                                                     @endforeach
