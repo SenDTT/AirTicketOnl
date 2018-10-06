@@ -299,15 +299,15 @@
                     </div>
                 </div>
                 @if($returnDate != 'NA')
-                    <div class="returnFlight-info">
+                <div class="returnFlight-info">
                         <ul class="list-inline flights-tittle">
                             <li><h3>Chuyến về</h3></li>
                             <li>
                                 <blockquote>
                                     <ul class="list-inline">
-                                        <li>{{$to}} - Sân bay</li>
+                                        <li>{{$locationTo->location_name}} - Sân bay</li>
                                         <li><span class="glyphicon glyphicon-transfer"></span></li>
-                                        <li>{{$from}} - Sân bay</li>
+                                        <li>{{$locationFrom->location_name}} - Sân bay</li>
                                     </ul>
                                     <label>{{$returnDate}}</label>
                                 </blockquote>
