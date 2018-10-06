@@ -15,6 +15,11 @@ class FlightController extends Controller
     public function index()
     {
         $flights = Flight::with('route', 'airline', 'airplane')->get();
+
+
+        foreach ($flights as $k => $flight){
+            $flights[$k]['ticket'] = Flight::findTicketTypePrice($flight->id);
+        }
         return view('backend.flight.index', compact('flights'));
     }
 
