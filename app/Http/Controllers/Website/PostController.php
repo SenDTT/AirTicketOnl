@@ -43,7 +43,6 @@ class PostController extends Controller
             [
                 'txtFrom' => 'required',
                 'txtTo' => 'required|different:txtFrom',
-                'txtDate' => 'date|after:yesterday',
             ],
             [
                 'txtFrom.required' => 'Vui lòng chọn điểm đi',
