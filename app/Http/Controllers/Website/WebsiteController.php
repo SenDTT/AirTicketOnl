@@ -188,7 +188,7 @@ class WebsiteController extends Controller
             $messages->from('no-reply@com.vn', 'Thanh Sen');
         });
 
-        //Cart::clear();
+        Cart::clear();
 
 
         return redirect()->route('web.paymentSuccess');
