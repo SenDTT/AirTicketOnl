@@ -15,16 +15,15 @@ class Reservations extends Model
         'phone',
         'email',
         'requirement',
+        'total',
         'status',
     ];
 
     static public $rules = [
-        'reservation_code' => 'required|min:1:max:255',
         'reservation_gender' => 'required|min:1:max:255',
         'name' => 'required|min:1:max:255',
         'phone' => 'required|digits_between:10,12',
         'email' => 'required|email',
-        'requirement' => 'required',
-        'status' => 'required',
+        'requirement' => 'required'
     ];
 }

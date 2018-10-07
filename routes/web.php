@@ -62,4 +62,8 @@ Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
     Route::get('/cart/remove-ticket','WebsiteController@removeTicket')->name('web.removeTicket');
     Route::get('/cart/update-ticket','WebsiteController@updateTicket')->name('web.updateTicket');
     Route::get('/gio-hang.html','WebsiteController@cart')->name('web.cart');
+
+    Route::get('/thanh-toan.html','WebsiteController@payment')->name('web.payment');
+    Route::post('/thanh-toan.html','WebsiteController@postPayment')->name('web.postPayment');
+    Route::get('/thanh-toan-thanh-cong.html','WebsiteController@paymentSuccess')->name('web.paymentSuccess');
 });

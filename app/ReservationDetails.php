@@ -10,17 +10,17 @@ class ReservationDetails extends Model
 
     protected $fillable = [
         'reservation_id',
-        'gender',
-        'first_name',
-        'last_name',
+        'ticket_type_price_id',
+        'quantity',
+        'total',
         'check_in_baggage'
     ];
 
     static public $rules = [
         'reservation_id' => 'required|min:1:max:255',
-        'gender' => 'required|min:1:max:255',
-        'first_name' => 'required|min:1:max:255',
-        'last_name' => 'required',
+        'ticket_type_price_id' => 'required',
+        'quantity' => 'required',
+        'total' => 'required',
         'check_in_baggage' => 'required'
     ];
 
