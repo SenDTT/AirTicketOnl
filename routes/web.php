@@ -63,3 +63,7 @@ Route::group(['prefix' => '', 'namespace' => 'Website'], function (){
     Route::get('/cart/update-ticket','WebsiteController@updateTicket')->name('web.updateTicket');
     Route::get('/gio-hang.html','WebsiteController@cart')->name('web.cart');
 });
+
+Route::match(['GET', 'POST','PUT'],'/match',function(){
+    return 'match route';
+});
