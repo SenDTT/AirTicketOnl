@@ -102,6 +102,14 @@
                     @endif
                 </table>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('web.search') }}" class="btn btn-sm btn-primary">Trở lại</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ route('web.payment') }}" class="pull-right btn btn-sm btn-success">Đặt vé</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

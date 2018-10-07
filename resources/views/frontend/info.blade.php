@@ -131,98 +131,67 @@
                     </div>
                 </div>
                 <div class="flight-detail-info-choose">
-                    <table class="table-detail-choose">
-                        <tr>
-                            <th>Hành khách</th>
-                            <th class="text-center">Số lượng</th>
-                            <th class="text-right">Tổng giá vé</th>
-                        </tr>
-                        <tr>
-                            <td>Người lớn</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">42423432 <span class=" text-uppercase">VND</span></td>
-                        </tr>
-                        <tr>
-                            <td>Trẻ em</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">42423432 <span class="text-uppercase">VND</span></td>
-                        </tr>
-                        <tr>
-                            <td>Em bé</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">42423432 <span class="text-uppercase">VND</span></td>
-                        </tr>
-                    </table>
+                    <div class="table-responsive js-content-cart">
+                        <table class="table table-bordered table-hover table-secondary">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Chuyến bay</th>
+                                <th>Loại vé</th>
+                                <th>Giá vé</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($carts as $item)
+                                <?php
+                                $flight = \App\Flight::findFlight($item->attributes->flight_id);
+                                ?>
+                                <tr>
+                                    <td>#</td>
+                                    <td>{{ $flight->name }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ format_currency($item->price) }} VNĐ</td>
+                                    <td>{{ $item->quantity }}   </td>
+                                    <td>{{ format_currency($item->quantity*$item->price) }} VNĐ</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            @if(!Cart::isEmpty())
+                            @else
+                                <tfoot>
+                                <tr>
+                                    <td class="text-center" colspan="99">Không có vé</td>
+                                </tr>
+                                </tfoot>
+                            @endif
+                        </table>
+                    </div>
                 </div>
-                <div class="sum">
-                    <label>Tổng giá vé: </label>
-                    <label class="text-right">'tổng' <span class="unit text-uppercase">VND</span></label>
-                </div>
-            </div>
-            {{--customer-Info--}}
-            <div class="content-info flight-choose">
-                <label class="h4 text-uppercase txtTittle"><span class="glyphicon glyphicon-user"></span>Thông tin hành khách</label>
-                <ol>
-                    <li class="pd-li-customer">
-                        <span>Người lớn</span>
-                        <div class="row info-customer">
-                            <div class="col-sm-2">
-                                <h5>Danh xưng</h5>
-                                <div class="input-group selects">
-                                    <select class="form-control">
-                                        <option value="gentlement" selected>Quý ông</option>
-                                        <option value="lady">Quý bà</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-5">
-                                <h5>Họ và tên đệm</h5>
-                                <div class="input-group">
-                                    <input type="text" class="form-control text-capitalize" id="lastName" name="txtLastName"/>
-                                </div>
-                            </div>
-                            <div class="col-sm-5">
-                                <h5>Tên</h5>
-                                <div class="input-group">
-                                    <input type="text" class="form-control text-capitalize" id="firstName" name="txtFirstName"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bags-order">
-                            <h5 class="font-weight-bold">Hành lý ký gửi</h5>
-                            <ul class="list-inline">
-                                <li>Chuyến đi:</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault1">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioFlight" id="rdDefault">Không, cảm ơn</li>
-                            </ul>
-                            <ul class="list-inline">
-                                <li>Chuyến về:</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                                <li class="bags"><input type="radio" name="radioReturnFlight" id="rdDefault">Không, cảm ơn</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ol>
+                @if(!Cart::isEmpty())
+                    <div class="sum">
+                        <label>Tổng giá vé: </label>
+                        <label class="text-right">{{ format_currency(Cart::getTotal()) }} <span class="unit text-uppercase">VND</span></label>
+                    </div>
+                @else
+                    <div class="sum">
+                        <label>Empty: </label>
+                    </div>
+                @endif
+
             </div>
             {{--contact-info--}}
             <div class="content-info flight-choose">
                 <label class="h4 text-uppercase txtTittle"><span class="glyphicon glyphicon-earphone"></span> Thông tin liên hệ</label>
+                <form action="{{ route('web.postPayment') }}" method="post">
+                    {{ csrf_field() }}
                 <div class="contact-info">
                     <div class="row row-last">
                         <div class="col-sm-6">
                             <h5>Danh xưng</h5>
                             <div class="input-group selects">
-                                <select class="form-control">
+                                <select name="reservation_gender" class="form-control">
                                     <option value="gentlement" selected>Quý ông</option>
                                     <option value="lady">Quý bà</option>
                                 </select>
@@ -231,8 +200,9 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <h5>Họ và tên</h5>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="nameContact" name="txtNameContact"/>
+                                <div class="input-group {{ form_error_class('name', $errors) }}">
+                                    <?= Form::text('name',null,['class'=>'form-control']); ?>
+                                    {!! form_error_message('name', $errors) !!}
                                 </div>
                             </div>
                         </div>
@@ -241,16 +211,18 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <h5>Số điện thoại</h5>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="phoneContact" name="txtPhoneContact"/>
+                                <div class="input-group {{ form_error_class('phone', $errors) }}">
+                                    <?= Form::text('phone',null,['class'=>'form-control']); ?>
+                                    {!! form_error_message('phone', $errors) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <h5>Email</h5>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="emailContact" name="txtEmailContact"/>
+                                <div class="input-group {{ form_error_class('email', $errors) }}">
+                                    <?= Form::text('email',null,['class'=>'form-control']); ?>
+                                    {!! form_error_message('email', $errors) !!}
                                 </div>
                             </div>
                         </div>
@@ -258,10 +230,18 @@
                     <div class="row-last">
                         <h5>Yêu cầu </h5>
                         <div class="input-group">
-                            <textarea rows="3" id="txta" name="txta"></textarea>
+                            <div class="input-group {{ form_error_class('requirement', $errors) }}">
+                                <?= Form::textarea('requirement',null,['class'=>'form-control']); ?>
+                                {!! form_error_message('requirement', $errors) !!}
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row-last" style="margin: 1em 0">
+                        <button class="btn btn-sm btn-primary" type="submit">Đặt vé</button>
+                    </div>
                 </div>
+                </form>
             </div>
             {{--Terms of payments--}}
             <div class="content-info flight-choose">
