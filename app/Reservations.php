@@ -9,7 +9,6 @@ class Reservations extends Model
     protected $table = 'reservations';
 
     protected $fillable = [
-        'reservation_code',
         'reservation_gender',
         'name',
         'phone',
@@ -24,6 +23,5 @@ class Reservations extends Model
         'name' => 'required|min:1:max:255',
         'phone' => 'required|digits_between:10,12',
         'email' => 'required|email',
-        'requirement' => 'required'
     ];
 }

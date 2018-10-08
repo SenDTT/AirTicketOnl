@@ -25,21 +25,19 @@
                                                     <tr>
                                                         <th>#ID</th>
                                                         <th>Reservation_code</th>
-                                                        <th>Gender</th>
-                                                        <th>First Name</th>
-                                                        <th>Last Name</th>
-                                                        <th>Check in Baggage</th>
+                                                        <th>ticket_type_price_id</th>
+                                                        <th>Quantity</th>
+                                                        <th>Total</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     @foreach($reservationDetails  as $key => $reservationDetail)
                                                         <tr role="row">
                                                         <td>#{{ $reservationDetail->id }}</td>
-                                                        <td>{{ $reservationDetail->reservation_code }}</td>
-                                                        <td>{{ $reservationDetail->gender }}</td>
-                                                        <td>{{ $reservationDetail->first_name }}</td>
-                                                        <td>{{ $reservationDetail->last_name }}</td>
-                                                        <td>{{ $reservationDetail->check_in_baggage }}</td>
+                                                        <td>{{ $reservationDetail->reservation_id }}</td>
+                                                        <td>{{ $reservationDetail->ticket_type_price_id }}</td>
+                                                        <td>{{ $reservationDetail->quantity }}</td>
+                                                        <td>{{ $reservationDetail->total }}</td>
                                                     </tr>
                                                     @endforeach
                                                     </tbody>

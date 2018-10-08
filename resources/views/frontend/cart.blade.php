@@ -52,7 +52,7 @@
 
     <div class="bg-content">
         <div class="pd-content">
-            <h3>Giỏ hàng</h3>
+            <h3>Vé của bạn</h3>
             <div class="table-responsive js-content-cart">
                 <table class="table table-bordered table-hover table-secondary">
                     <thead>

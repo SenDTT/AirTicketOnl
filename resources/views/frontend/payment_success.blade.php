@@ -54,7 +54,7 @@
         <div class="pd-content">
             <h3>Thanh toán</h3>
             <p class="text-primary">Đặt vé thành công</p>
-            <a href="{{ route('web.search') }}">Quay trở về</a>
+            <a href="{{ route('web.index') }}">Quay trở về</a>
         </div>
     </div>
 @endsection

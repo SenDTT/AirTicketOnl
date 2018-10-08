@@ -20,6 +20,7 @@
                     <li><a href="#">Giới thiệu</a></li>
                     <li><a href="#">Sổ tay du lịch</a></li>
                     <li><a href="#">Liên hệ</a></li>
+                    <li><a href="{{route('web.cart')}}">Giỏ hàng</a></li>
                 </ul>
             </div>
         </div>
@@ -88,56 +89,65 @@
                 </div>
                 <div class="collapse" id="findFlights">
                     <div id="flights" class="tab-pane fade in active">
-                        <form method="post" action="{{route('postHome')}}">
+                        <form action="{{ route('web.search') }}" method="post">
                             {{ csrf_field() }}
                             <div class="row form-group">
                                 {{--From ...city To ... city--}}
                                 <div class="col-sm-3">
-                                    <h5>Điểm đi</h5>
-                                    <select  name="txtFrom" class="form-control list-unstyled">
+                                    <h5><label for="from">Điểm đi</label></h5>
+                                    <select  name="from" id="from" class="form-control list-unstyled">
                                         @foreach($locations as $location)
                                             <option class="li-locations" value="{{ $location->id }}">{{$location->location_name}}({{$location->location_code}})</option>
                                         @endforeach
                                     </select>
-                                    @if($errors->has('txtFrom'))
-                                        <label class="text-danger">{!! $errors->first('txtFrom') !!}</label>
+                                    @if($errors->has('from'))
+                                        <label class="text-danger">{!! $errors->first('from') !!}</label>
                                     @endif
 
-                                    <h5>Điểm đến</h5>
-                                    <select name="txtTo" class="form-control list-unstyled" >
+                                    <h5><label for="to"></label></h5>
+                                    <select name="to" id="to" class="form-control list-unstyled" >
                                         @foreach($locations as $location)
                                             <option class="li-locations" value="{{ $location->id }}">{{$location->location_name}}({{$location->location_code}})</option>
                                         @endforeach
                                     </select>
-                                    @if($errors->has('txtTo'))
-                                        <label class="text-danger">{!! $errors->first('txtTo') !!}</label>
+                                    @if($errors->has('to'))
+                                        <label class="text-danger">{!! $errors->first('to') !!}</label>
                                     @endif
                                 </div>
                                 {{--Date and returnDate--}}
                                 <div class="col-sm-3">
-                                    <h5>Ngày đi</h5>
+                                    <h5><label for="toDate">Ngày đi</label></h5>
                                     <div class="input-group">
                                 <span class="input-group-addon" id="add-on-date">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
-                                        <input type="date" class="form-control" id="toDate" name="txtDate" aria-describedby="add-on-date" required/>
+                                        <input type="date" class="form-control" id="toDate" name="toDate" aria-describedby="add-on-date" required/>
                                     </div>
-                                    <h5><input type="checkbox" id="checkbox" onclick="myFunc()" name="cbReturnDate"> Ngày về</h5>
+                                    @if($errors->has('toDate'))
+                                        <label class="text-danger">{!! $errors->first('toDate') !!}</label>
+                                    @endif
+                                    <h5>
+                                        <input type="checkbox" id="checkbox" onclick="myFunc()" name="cbReturnDate">
+                                        <label for="checkbox">Ngày về</label>
+                                    </h5>
                                     <div id="idReturnDate">
                                         <div class="input-group">
                                 <span class="input-group-addon" id="add-on-return-date">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
-                                            <input type="date" class="form-control" id="toReturnDate" name="txtReturnDate"
+                                            <input type="date" class="form-control" id="toReturnDate" name="returnDate"
                                                    aria-describedby="add-on-return-date" required/>
                                         </div>
                                     </div>
+                                    @if($errors->has('returnDate'))
+                                        <label class="text-danger">{!! $errors->first('returnDate') !!}</label>
+                                    @endif
                                 </div>
                                 {{----}}
                                 <div class="col-sm-3">
                                     <h5>Người lớn</h5>
                                     <div class="input-group selects">
-                                        <select name="txtAdult" class="form-control">
+                                        <select name="adult" class="form-control">
                                             <option value="1" selected>1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -149,7 +159,7 @@
                                     </div>
                                     <h5>Trẻ em</h5>
                                     <div class="input-group selects">
-                                        <select name="txtChild" class="form-control">
+                                        <select name="child" class="form-control">
                                             <option value="0" selected>0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -165,7 +175,7 @@
                                 <div class="col-sm-3">
                                     <h5>Em bé(< 2 tuổi)</h5>
                                     <div class="input-group selects">
-                                        <select name="txtBaby" class="form-control">
+                                        <select name="baby" class="form-control">
                                             <option value="0" selected>0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -211,7 +221,7 @@
                             ?>
                             <div class="flight">
                                 <div class="row text-center">
-                                    <div class="col-md-2"><img src="{{$flight->airline_img}}" alt="name" ></div>
+                                    <div class="col-md-2"><img src="{{$flight->airline_img}}" alt="{{$flight->airline_name}}" ></div>
                                     <div class="col-md-2">{{ $flight->name }}</div>
                                     <div class="col-md-2">{{$locationFrom->location_name}} <br> {{$flight->depart_date}}</div>
                                     <div class="col-md-2">{{$locationTo->location_name}} <br> {{$flight->arrive_date}}</div>
@@ -224,7 +234,7 @@
                                 <div class="collapse flight_details" id="flightDetail{{$k}}">
                                     <form class="detail" method="get" action="{{route('info')}}">
                                         <div class="row">
-                                            <div class="col-sm-1"><img src="{{$flight->airline_img}}" alt="name" ></div>
+                                            <div class="col-sm-1"><img src="{{$flight->airline_img}}" alt="{{$flight->airline_name}}" ></div>
                                             <div class="col-sm-2 text-right">
                                                 <ul class="list-unstyled">
                                                     <li class="text-capitalize">{{$locationFrom->location_name}}</li>

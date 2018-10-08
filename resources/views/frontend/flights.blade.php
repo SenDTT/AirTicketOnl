@@ -271,7 +271,7 @@
                                                     <tr>
                                                         <td>Người lớn</td>
                                                         <td class="text-center">{{$adult}}</td>
-                                                        <td class="text-center"><?php echo $flight->flight_price?></td>
+                                                        <td class="text-center"></td>
                                                         <td class="text-right">42423432</td>
                                                     </tr>
                                                     @if (($child > 0) && ($child <= 7))

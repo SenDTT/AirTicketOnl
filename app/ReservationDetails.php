@@ -13,7 +13,6 @@ class ReservationDetails extends Model
         'ticket_type_price_id',
         'quantity',
         'total',
-        'check_in_baggage'
     ];
 
     static public $rules = [
@@ -21,11 +20,15 @@ class ReservationDetails extends Model
         'ticket_type_price_id' => 'required',
         'quantity' => 'required',
         'total' => 'required',
-        'check_in_baggage' => 'required'
     ];
 
     public function reservation()
     {
         return $this->belongsTo(Reservations::class, 'reservation_id', 'id');
+    }
+
+    public function ticket_type_price()
+    {
+        return $this->belongsTo(TicketTypePrices::class, 'ticket_type_price_id', 'id');
     }
 }

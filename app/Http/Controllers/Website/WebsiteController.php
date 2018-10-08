@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Banks;
 use App\ReservationDetails;
 use App\Reservations;
 use Cart;
@@ -113,16 +114,26 @@ class WebsiteController extends Controller
     protected function getFlightByLocationAndDate($from,$to,$date)
     {
         $flights = Flight::with('route', 'airline', 'airplane')->select(
-            'flights.id as id', 'flights.name as name', 'flights.route_id as route_id',
-            'flights.airline_id as airline_id', 'flights.airplane_id as airplane_id',
-            'flights.depart_date as depart_date', 'flights.arrive_date as arrive_date',
-            'flights.flight_time as flight_time', 'flights.flight_price as flight_price',
-            'routes.route_code as route_code', 'routes.airport_id_from as airport_id_from',
-            'routes.airport_id_to as airport_id_to', 'routes.location_code_from as location_code_from',
+            'flights.id as id',
+            'flights.name as name',
+            'flights.route_id as route_id',
+            'flights.airline_id as airline_id',
+            'flights.airplane_id as airplane_id',
+            'flights.depart_date as depart_date',
+            'flights.arrive_date as arrive_date',
+            'flights.flight_time as flight_time',
+            'routes.route_code as route_code',
+            'routes.airport_id_from as airport_id_from',
+            'routes.airport_id_to as airport_id_to',
+            'routes.location_code_from as location_code_from',
             'routes.location_code_to as location_code_to',
-            'airlines.airline_code as airline_code', 'airlines.airline_name as airline_name',
-            'airlines.carry_on as carry_on', 'airlines.check_in_baggage', 'airlines.airline_img as airline_img',
-            'airplanes.airplane_code as airplane_code', 'airplanes.airplane_name as airplane_name'
+            'airlines.airline_code as airline_code',
+            'airlines.airline_name as airline_name',
+            'airlines.carry_on as carry_on',
+            'airlines.check_in_baggage',
+            'airlines.airline_img as airline_img',
+            'airplanes.airplane_code as airplane_code',
+            'airplanes.airplane_name as airplane_name'
         )
             ->leftJoin('routes', 'routes.id', '=', 'flights.route_id')
             ->leftJoin('airlines', 'airlines.id', '=', 'flights.airline_id')
@@ -142,8 +153,9 @@ class WebsiteController extends Controller
 
     public function payment()
     {
+        $banks = Banks::all();
         $carts = Cart::getContent();
-        return view('frontend.info',compact('carts'));
+        return view('frontend.info',compact('carts','banks'));
     }
 
     public function postPayment(Request $request)

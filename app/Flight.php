@@ -16,7 +16,6 @@ class Flight extends Model
         'depart_date',
         'arrive_date',
         'flight_time',
-        'flight_price',
     ];
 
     static public $rules = [
@@ -27,7 +26,6 @@ class Flight extends Model
         'arrive_date' => 'required|date',
         'depart_date' => 'required|date',
         'flight_time' => 'required',
-        'flight_price' => 'required|numeric',
     ];
 
     public function route()

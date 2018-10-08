@@ -15,6 +15,7 @@
     <link href="{{ asset('css/ctn-home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/flights.css') }}" rel="stylesheet">
     <link href="{{ asset('css/info.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 @yield('content')

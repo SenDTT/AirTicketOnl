@@ -24,7 +24,6 @@
                                                     <thead>
                                                     <tr>
                                                         <th>#ID</th>
-                                                        <th>Reservation_code</th>
                                                         <th>Reservation_gender</th>
                                                         <th>Name</th>
                                                         <th>Phone</th>
@@ -37,7 +36,6 @@
                                                     @foreach($reservations  as $key => $reservation)
                                                         <tr role="row">
                                                         <td>#{{ $reservation->id }}</td>
-                                                        <td>{{ $reservation->reservation_code }}</td>
                                                         <td>{{ $reservation->reservation_gender }}</td>
                                                         <td>{{ $reservation->name }}</td>
                                                         <td>{{ $reservation->phone }}</td>

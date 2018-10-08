@@ -22,7 +22,7 @@ $(document).ready(function () {
             data: {"id": id, "number": number,'name':name,'price':price,'flight_id':flight_id},
             success: function (data) {
                 NProgress.done();
-                toastr.success('Thêm vào giỏ hàng thành công!', 'Thông báo')
+                toastr.success('Thêm vào giỏ hàng thành công!', 'Thông báo');
             }
         });
     });

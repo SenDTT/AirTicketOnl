@@ -3,6 +3,9 @@
     margin-top: 2%;
     background-color: aliceblue;
 }
+.material-icons{
+    color: blue!important;
+}
 .tittle-choose{
     background-color: lightgray;
     width: 100%;
@@ -24,7 +27,7 @@
     margin: 0;
 }
 .tittle-choose .col-sm-2{
-    width: 85px;
+    width: 86px;
 }
 .tittle-choose .col-sm-2, .tittle-choose .col-sm-6{
     padding-right: 0;
