@@ -1,3 +1,6 @@
+.nav-hover:hover{
+    color: blue!important;
+}
 .container-fluid{
     padding: 0;
 }

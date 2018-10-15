@@ -12,15 +12,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{route('home')}}" class="h3 navbar-brand">Vé máy bay trực tuyến</a>
+                <a href="{{route('web.index')}}" class="h3 navbar-brand">Vé máy bay trực tuyến</a>
             </div>
             <div class="collapse navbar-collapse text-uppercase" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{route('home')}}">Đặt vé</a></li>
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Sổ tay du lịch</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                    <li><a href="{{route('web.cart')}}">Giỏ hàng</a></li>
+                    <li><a href="{{route('web.index')}} " class=" nav-hover">Đặt vé</a></li>
+                    <li><a href="#" class=" nav-hover">Giới thiệu</a></li>
+                    <li><a href="#" class=" nav-hover">Sổ tay du lịch</a></li>
+                    <li><a href="#" class=" nav-hover">Liên hệ</a></li>
+                    <li><a href="{{route('web.cart')}}" class=" nav-hover">Giỏ hàng</a></li>
                 </ul>
             </div>
         </div>

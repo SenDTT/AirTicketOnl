@@ -43,6 +43,7 @@
             <p>{{ $requirement }}</p></li>
     </ul>
     <p style="color:#06C; font-weight:bold;">Khi thanh toán, bạn nhớ ghi rõ và TÊN của mình để tránh nhầm lẫn.</p>
+    <p style="color:#06C; font-weight:bold;">Bạn vui lòng thanh toán trong vòng 24h, nếu hết thời gian, hệ thống sẽ tự động hủy đơn đặt hàng của bạn.</p>
     <p>====================================</p>
 </div>
 </body>

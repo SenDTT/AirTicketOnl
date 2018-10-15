@@ -26,8 +26,8 @@ $(document).ready(function(){
         } // End if
     });
 })
-//document.querySelector('#todaygo').valueAsDate = new Date();
-//document.querySelector('#todayback').valueAsDate = new Date();
+document.querySelector('#todaygo').valueAsDate = new Date();
+document.querySelector('#todayback').valueAsDate = new Date();
 document.querySelector('#todaygo').min = new Date();
 document.querySelector('#todayback').min = new Date();
 //checkBox
